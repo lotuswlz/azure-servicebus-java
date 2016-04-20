@@ -1,9 +1,11 @@
 *.class
 
+.classpath
+.project
+
 bin/
 build/
 tmp/
 
 svcbus.jar
-
 

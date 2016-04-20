@@ -3,25 +3,26 @@ package com.joakim.azure.svcbus;
 import com.joakim.azure.svcbus.SvcBusUtil;
 
 /**
-
-Chris Joakim, 2016/04/20
-*/
+ * This class is the entry-point to thie example code; it is invoked from the command-line.
+ * 
+ * Chris Joakim, 2016/04/20
+ */
 
 public class Main {
 
-	public static void main(String [] args) {
-		
+	public static void main(String[] args) {
+
 		SvcBusUtil util = null;
-		
+
 		for (int i = 0; i < args.length; i++) {
 			log("arg " + i + " -> " + args[i]);
 		}
-		
+
 		if (args.length > 0) {
-			String  func  = args[0].toLowerCase();
-			String  qname = null;  // use default for now
+			String func = args[0].toLowerCase();
+			String qname = null; // use default for now
 			Integer count = new Integer(1);
-			
+
 			switch (func) {
 			case "display_queue_info":
 				util = new SvcBusUtil();
@@ -54,36 +55,35 @@ public class Main {
 			default:
 				printUsage("uknown function: " + func);
 			}
-		}
-		else {
+		} else {
 			printUsage(null);
 		}
 	}
 
 	private static void pause(long ms) {
-		
+
 		try {
 			Thread.sleep(ms);
-		} 
+		}
 		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	private static void printUsage(String msg) {
-		
+
 		if (msg != null) {
 			log(msg);
 		}
-		log("rrr");
+		log("Usage:");
 		log("  display_queue_info");
-		log("  send_messages_to_queue 10");
-		log("  read_messages_from_queue 100");
+		log("  send_messages_to_queue 20");
+		log("  read_messages_from_queue 10");
 	}
-	
+
 	private static void log(Object obj) {
-		
-		if (obj != null) { 
+
+		if (obj != null) {
 			System.out.println("Main: " + obj.toString());
 		}
 	}
