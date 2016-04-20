@@ -27,10 +27,10 @@ captured above.  Note, the use of environment variables is a recommended
 practice vs otherwise hard-coding these values in the application code.
 
 ```
-AZURE_SVCBUS_KEY_NAME=RootManageSharedAccessKey
-AZURE_SVCBUS_KEY_VALUE=<your key value>
-AZURE_SVCBUS_NAMESPACE=<your namespace>
-AZURE_SVCBUS_QUEUE1=<your queue name>
+AZURE_SERVICEBUS_KEY_NAME=RootManageSharedAccessKey
+AZURE_SERVICEBUS_ACCESS_KEY=<your key value>
+AZURE_SERVICEBUS_NAMESPACE=<your namespace>
+AZURE_SERVICEBUS_QUEUE1=<your queue name>
 ```
 
 To install the necessary Java jar files, run the following script

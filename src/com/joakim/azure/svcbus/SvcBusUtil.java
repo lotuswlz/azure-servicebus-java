@@ -31,11 +31,11 @@ public class SvcBusUtil {
 
 	public SvcBusUtil() {
 
-		namespace = System.getenv("AZURE_SVCBUS_NAMESPACE");
-		queueName = System.getenv("AZURE_SVCBUS_QUEUE1");
-		keyName   = System.getenv("AZURE_SVCBUS_KEY_NAME");
-		keyValue  = System.getenv("AZURE_SVCBUS_KEY_VALUE");
-
+		namespace = System.getenv("AZURE_SERVICEBUS_NAMESPACE");
+		queueName = System.getenv("AZURE_SERVICEBUS_QUEUE1");
+		keyName   = System.getenv("AZURE_SERVICEBUS_KEY_NAME");
+		keyValue  = System.getenv("AZURE_SERVICEBUS_ACCESS_KEY");
+		
 		log("constructor, namespace", namespace);
 		log("constructor, queueName", queueName);
 		log("constructor, keyName  ", keyName);
