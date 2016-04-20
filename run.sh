@@ -8,9 +8,7 @@
 # ./run.sh send_messages_to_queue 10
 # ./run.sh read_messages_from_queue 4
 
-ant                   # compile and jar
-source classpath.sh   # set the CLASSPATH
-echo ""
+source classpath.sh  # set the CLASSPATH
 
 CLASS="com.joakim.azure.svcbus.Main"
 

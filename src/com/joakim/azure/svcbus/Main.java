@@ -3,7 +3,7 @@ package com.joakim.azure.svcbus;
 import com.joakim.azure.svcbus.SvcBusUtil;
 
 /**
- * This class is the entry-point to thie example code; it is invoked from the command-line.
+ * This class is the entry-point to the example code; it is invoked from the command-line.
  * 
  * Chris Joakim, 2016/04/20
  */
