@@ -1,0 +1,112 @@
+<project name="azure-servicebus-java"
+  default="create-jar"
+  xmlns:ivy="antlib:org.apache.ivy.ant">
+
+  <description>
+    Apache Ant buildfile for this project.
+    Uses Apache Ivy to manage library dependencies.
+    
+    Chris Joakim, 2016/04/20
+
+    Command Line Use:
+      $ ant ivy-clean-cache  
+      $ ant ivy-resolve     (downlib libs and their dependencies per ivy.xml)
+      $ ant ivy-report
+      $ ant                 (compiles the code, produces svcbus.jar)
+
+  </description>
+
+  <!-- define variables used in this script -->
+  <property name="class.dir"           value="bin" />
+  <property name="lib.dir"             value="lib" />
+  <property name="src.dir"             value="src" />
+  <property name="res.dir"             value="res" />
+  <property name="build.dir"           value="build" />
+  <property name="jar.classes.name"    value="svcbus.jar" />
+
+  <!-- paths used for compilation and run  -->
+  <path id="lib.path.id">
+    <fileset dir="${lib.dir}" />
+  </path>
+
+  <path id="run.path.id">
+    <path refid="lib.path.id" />
+    <path location="${build.dir}" />
+  </path>
+
+  <tstamp>
+    <format property="build_timestamp" pattern="yyyyMMdd_HHmm" />
+  </tstamp>
+
+  <!-- 'atomic' tasks with no dependencies  -->
+
+  <target name="ivy-resolve" description="retreive dependencies with ivy">
+    <ivy:retrieve/>
+  </target>
+
+  <target name="ivy-report" depends="ivy-resolve" description="generates a report of ivy dependencies">
+    <ivy:report todir="${build.dir}"/>
+  </target>
+
+  <target name="ivy-clean-cache" description="clean the ivy cache">
+    <ivy:cleancache />
+  </target>
+
+  <target name="clean" description="clean the project">
+    <mkdir dir="${build.dir}"/>
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <target name="init">
+    <description>
+      Initialize the classpath and other settings.
+    </description>
+
+    <delete dir="${class.dir}" />
+    <mkdir dir="${class.dir}" />
+
+    <delete dir="${build.dir}" />
+    <mkdir dir="${build.dir}" />
+      
+    <path id="javac.classpath">
+      <pathelement path="${class.dir}" />
+      <fileset dir="${lib.dir}">
+        <include name="**/*.jar" />
+      </fileset>
+    </path>
+
+    <!-- the ant.properties file is generated here for script debugging -->
+    <echoproperties destfile="${build.dir}/ant.properties"/>
+  </target>
+
+  <target name="compile" depends="init">
+    <description>
+      Compile the Java source files.
+    </description>
+    <javac srcdir="${src.dir}" 
+           destdir="${class.dir}" 
+           target="1.8" 
+           debug="true" 
+           debuglevel="lines,vars,source">
+      <classpath refid="javac.classpath" />
+    </javac>
+  </target>
+
+  <target name="create-jar" depends="compile">
+    <description>
+      JAR the compiled class files, and include a manifest.
+    </description>
+
+    <jar destfile="${jar.classes.name}" basedir="${class.dir}">
+      <manifest>
+        <attribute name="Built-By"    value="${user.name}" />
+        <attribute name="Build-Time"  value="${build_timestamp}" />
+        <attribute name="Company"     value="Microsoft" />
+        <attribute name="Main-Class"  value="com.joakim.azure.svcbus.Main" />
+        <attribute name="Can-Redefine-Classes"    value="false" />
+        <attribute name="Can-Retransform-Classes" value="false" />
+      </manifest>
+    </jar>
+  </target>
+	
+</project>
