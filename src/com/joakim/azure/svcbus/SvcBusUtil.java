@@ -15,7 +15,7 @@ import com.microsoft.windowsazure.services.servicebus.models.ReceiveQueueMessage
 /**
  * This class encapsulates all access to the Azure Service Bus.
  * 
- * Chris Joakim, 2016/04/20
+ * Chris Joakim, 2016/04/21
  */
 public class SvcBusUtil {
 
@@ -38,8 +38,8 @@ public class SvcBusUtil {
 		
 		log("constructor, namespace", namespace);
 		log("constructor, queueName", queueName);
-		log("constructor, keyName  ", keyName);
-		log("constructor, keyValue ", keyValue);
+		//log("constructor, keyName  ", keyName);
+		//log("constructor, keyValue ", keyValue);
 
 		config = ServiceBusConfiguration.configureWithSASAuthentication(
 					namespace, keyName, keyValue, ".servicebus.windows.net");
