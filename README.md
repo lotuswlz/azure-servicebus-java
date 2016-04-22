@@ -2,7 +2,7 @@
 
 Azure ServiceBus example app, implemented in Java.
 
-Chris Joakim, 2016/04/20
+Chris Joakim, 2016/04/22
 
 ## links
 
