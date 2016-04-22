@@ -26,6 +26,8 @@ Set environment variables per the Azure Service Bus configuration values
 captured above.  Note, the use of environment variables is a recommended
 practice vs otherwise hard-coding these values in the application code.
 
+See "the twelve-factor app" http://12factor.net
+
 ```
 AZURE_SERVICEBUS_KEY_NAME=RootManageSharedAccessKey
 AZURE_SERVICEBUS_ACCESS_KEY=<your key value>
@@ -46,6 +48,14 @@ Install the "Azure Toolkit for Java":
 - Help -> Install New Software
 - Enter URL  http://dl.microsoft.com/eclipse
 - Select and install the "Azure Toolkit for Java"
+
+## compile the examples
+
+Execute Apache Ant as follows, which creates the "svcbus.jar" file.
+
+```
+$ ant
+```
 
 ## execute the examples
 
